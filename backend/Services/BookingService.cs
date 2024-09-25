@@ -12,8 +12,6 @@ namespace backend.Services
         private readonly IUserRepository _userRepository;
         private readonly ApiContext _context;                               // ver si se aplica Para obtener y notificar al usuario.
 
-
-
         public BookingService(IBookingRepository bookingRepository, IUserRepository userRepository,ApiContext context)
         {
             _bookingRepository = bookingRepository;
@@ -81,7 +79,7 @@ namespace backend.Services
             throw new NotImplementedException();
         }
 
-        public List<Booking> GetBookingsForRoomAndTime(int? roomId, DateTime? startDate, DateTime? endDate)
+        public List<Booking> GetBookingsForRoomAndTime(int roomId, DateTime startDate, DateTime endDate)
         {
             return _bookingRepository.GetBookingsForRoomAndTime(roomId, startDate, endDate).ToList();
         }
@@ -102,6 +100,7 @@ namespace backend.Services
         private void NotifyUser(string username, Booking canceledBooking)
         {
             var user = _userRepository.GetUserByUsername(username); //ver error
+
             if (user != null)
             {
                 // Aquí se puede implementar el envío de un correo electrónico o notificación al usuario //ver si se usa

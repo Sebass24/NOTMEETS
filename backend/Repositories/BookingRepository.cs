@@ -36,14 +36,16 @@ namespace backend.Repositories
         }
 
         // Eliminar una reserva por su ID
-        public void DeleteBooking(int id)
+        public async Task<bool> DeleteBooking(int id)
         {
             var booking = _context.Bookings.Find(id);
             if (booking != null)
             {
                 _context.Bookings.Remove(booking);
-                _context.SaveChanges(); // Guardar cambios en la base de datos
+                await _context.SaveChangesAsync(); // Guardar cambios en la base de datos
+                return true;
             }
+            return false;
         }
 
         // Obtener una reserva por su ID
@@ -68,7 +70,7 @@ namespace backend.Repositories
             throw new NotImplementedException();
         }
 
-        Task<bool> IBookingRepository.DeleteBooking(int id)
+        public List<Booking> GetBookingsForRoomAndTime(int roomId, DateTime startDate, DateTime endDate)
         {
             throw new NotImplementedException();
         }

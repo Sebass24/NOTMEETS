@@ -115,9 +115,10 @@ namespace backend.Repositories
             return null;
         }
 
-        public User GetUserByUsername(string username)
+        public User? GetUserByUsername(string username)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            return user;
         }
     }
 

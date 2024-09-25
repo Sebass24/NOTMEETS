@@ -32,7 +32,7 @@ namespace backend.Controllers
             }
         }
             // GET: api/Booking/5
-            [HttpGet("{id}")]
+            [HttpGet("{id:int}")]
             public async Task<IActionResult> GetBooking(int id)
             {
                 var booking = _bookingService.GetBookingById(id);
@@ -46,7 +46,7 @@ namespace backend.Controllers
 
         // GET: api/Booking/5
         [HttpGet("all")]
-        public async Task<IActionResult> GetBookingsForRoomAndTime(int? roomId, DateTime? startDate, DateTime? endDate)
+        public async Task<IActionResult> GetBookingsForRoomAndTime(int roomId, DateTime startDate, DateTime endDate)
         {
             var booking = _bookingService.GetBookingsForRoomAndTime(roomId,startDate,endDate);
             if (booking == null)

@@ -11,6 +11,6 @@ namespace backend.Services
         void CancelBooking(int id);
         Booking UpdateBooking(int id, NewBookingDTO updatedBooking);
         bool DeleteBooking(int id);
-        List<Booking> GetBookingsForRoomAndTime(int? roomId, DateTime? startDate, DateTime? endDate);
+        List<Booking> GetBookingsForRoomAndTime(int roomId, DateTime startDate, DateTime endDate);
     }
 }

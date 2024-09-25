@@ -14,7 +14,7 @@ namespace backend.Repositories
         IEnumerable<UserDTO> GetAllUsers(); //Obtener todos los usuarios
         UserDTO? GetUserById(int id); //Obtener un usuario 
         UserDTO? GetUserRole(int id); //Obtener rol del usuario
-        User GetUserByUsername(string username);
+        User? GetUserByUsername(string username);
 
 
 
